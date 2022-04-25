@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabelas com Javascript</title>
+</head>
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 0px;
+    }
+    h1{
+        margin-bottom: 20px;
+    }
+    table{
+        border-collapse: collapse;
+    }
+    th, td{
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+    }
+    th{
+        text-align: center;
+    }
+    .telefone{
+        text-align: right;
+    }
+    input{
+        height: 20px;
+        padding: 5px;
+        font-size: 1em;
+        margin-bottom: 20px;
+    }
+    input#idade{
+        width: 40px;
+    }
+    input#add{
+        height: 30px;
+    }
+    tr:nth-child(even){
+        background-color: rgb(158, 158, 158);
+    }
+</style>
+<body>
+    <h1>Tabelas com Javascript</h1>
+    <div>
+        Nome: <input type="text" id="nome">
+        Idade: <input type="number" id="idade">
+        Profissão: <input type="text" id="profissão">
+        Telefone: <input type="text" id="telefone">
+        <input type="button" value="Adicionar" id="add">
+    </div>
+    <table>
+        <thead>
+            <th scope="colgroup">Nome</th>
+            <th scope="colgroup">Idade</th>
+            <th scope="colgroup">Profissão</th>
+            <th scope="colgroup" colspwan="2">Telefone</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+
+<script>
+    //Buscando os elementos do DOM
+    const nome = document.getElementById('nome');
+    const idade = document.getElementById('idade');
+    const prof = document.getElementById('profissão');
+    const tel = document.getElementById('telefone');
+
+    //Adicionando Evento ao Button
+    var btn = document.getElementById('add');
+    btn.addEventListener('click', clicar);
+
+    //Buscando tabela
+    var table = document.querySelector('tbody');
+
+    function clicar(){
+        //Criando uma nova linha na tabela
+        var tr = document.createElement('tr');
+        table.appendChild(tr);
+
+        //Criando os dados na linha
+        var tdNome = document.createElement('td')
+        tr.appendChild(tdNome);
+        tdNome.textContent = nome.value;
+
+        var tdIdade = document.createElement('td')
+        tdIdade.textContent = idade.value;
+        tr.appendChild(tdIdade);
+
+        var tdProfissão = document.createElement('td')
+        tdProfissão.textContent = prof.value;
+        tr.appendChild(tdProfissão);
+
+        var tdTel = document.createElement('td')
+        tdTel.textContent = tel.value;
+        tr.appendChild(tdTel);
+        tdTel.classList.add("telefone")
+        
+         
+
+    }
+</script>
+</html>
